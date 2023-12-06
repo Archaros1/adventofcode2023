@@ -1,7 +1,8 @@
 file1 = open('input', 'r')
 lines = file1.readlines()
 
-# ex1
+# part 1
+print("Part 1")
 limits = {
   'red': 12,
   'green': 13,
@@ -30,3 +31,28 @@ for line in lines:
     sumValidIds += id
 
 print(sumValidIds)
+
+# part 2
+print("Part 2")
+totalPower = 0
+for line in lines:
+  game = line.replace("\n", '').split(': ')
+
+  minimalSet = {
+    'blue': 0,
+    'green': 0,
+    'red': 0,
+  }
+  sets = game[1].split('; ')
+  for set in sets:
+    grabs = set.split(', ')
+
+    for grab in grabs:
+      grab = grab.split(' ')
+      minimalSet[grab[1]] = max([int(grab[0]), minimalSet[grab[1]]])
+
+  print(minimalSet)
+  power = minimalSet['blue'] * minimalSet['green'] * minimalSet['red']
+  totalPower += power
+
+print(totalPower)
