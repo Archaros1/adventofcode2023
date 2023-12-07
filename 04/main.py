@@ -15,8 +15,8 @@ for lineKey, line in enumerate(lines):
   numbers = numbers.split(' | ')
   winningNumbers = numbers[0]
   myNumbers = numbers[1]
-  winningNumbers = re.findall('([0-9]{2}| [0-9]) ', winningNumbers)
-  myNumbers = re.findall('([0-9]{2}| [0-9]) ', myNumbers)
+  winningNumbers = re.findall('([0-9]{1,2})', winningNumbers)
+  myNumbers = re.findall('([0-9]{1,2})', myNumbers)
 
   for number in myNumbers:
     if number in winningNumbers:
